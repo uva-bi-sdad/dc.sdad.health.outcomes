@@ -9,7 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# VDOE SOL 3rd Grade Reading Scores, Health District Level
+# NAME OF DATASET YOU ARE ADDING 
 
 ## Get dataset DOI
 
@@ -17,22 +17,20 @@ knitr::opts_chunk$set(echo = TRUE)
 dataset_doi <- readLines(here::here("data/dataset_doi"))[1]
 ```
 
-## Get data from database
+## Code you used to create dataset
 
 ```{r data}
-dat_file_name <- "va_hd_vdoe_2019_2021_3rd_grade_mean_median_read_score"
+dat_file_name <- "YOUR_DATA_FILE_NAME"
 
-con <- get_db_conn()
-dat <- DBI::dbReadTable(con, c("dc_education_training", dat_file_name))
-DBI::dbDisconnect(con)
+source(here::here("data-raw/YOUR_CODE_FILE_NAME"))
 
-assign(dat_file_name, dat)
+assign(dat_file_name, YOUR_VAR_NAME_CONTAINING_DATASET)
 ```
 
 ## Write to compressed file
 
 ```{r compress}
-dat_file_path <- here::here(paste0("data/", "va_hd_vdoe_2019_2021_3rd_grade_mean_median_read_score", ".csv.xz"))
+dat_file_path <- here::here(paste0("data/", dat_file_name, ".csv.xz"))
 
 readr::write_csv(get(dat_file_name),
                  xzfile(dat_file_path, compression = 9))
