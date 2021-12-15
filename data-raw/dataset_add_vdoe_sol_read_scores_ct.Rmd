@@ -1,0 +1,51 @@
+---
+title: "Create Datafile"
+author: "Aaron Schroeder"
+date: "11/17/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# VDOE SOL 3rd Grade Reading Scores - County Level
+
+## Get dataset DOI
+
+```{r}
+dataset_doi <- readLines(here::here("data/dataset_doi"))[1]
+```
+
+## Get data from database
+
+```{r data}
+dat_file_name <- "va_ct_vdoe_2019_2021_3rd_grade_mean_median_read_score"
+
+con <- get_db_conn()
+dat <- DBI::dbReadTable(con, c("dc_education_training", dat_file_name))
+DBI::dbDisconnect(con)
+
+assign(dat_file_name, dat)
+```
+
+## Write to compressed file
+
+```{r compress}
+dat_file_path <- here::here(paste0("data/", "va_ct_vdoe_2019_2021_3rd_grade_mean_median_read_score", ".csv.xz"))
+
+readr::write_csv(get(dat_file_name),
+                 xzfile(dat_file_path, compression = 9))
+```
+
+## Upload Files to Dataverse Dataset
+
+```{r upload}
+dataverse::add_dataset_file(
+  file = dat_file_path,
+  dataset = dataset_doi,
+  key = Sys.getenv("DATAVERSE_KEY"),
+  server   = Sys.getenv("DATAVERSE_SERVER"),
+  description = dat_file_name
+)
+```
