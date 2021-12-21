@@ -9,7 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# NAME OF DATASET YOU ARE ADDING 
+# NAME OF DATASET YOU ARE ADDING (Ex: VDOE SOL 3rd Grade Reading Scores - County Level) 
 
 ## Get dataset DOI
 
@@ -20,11 +20,14 @@ dataset_doi <- readLines(here::here("data/dataset_doi"))[1]
 ## Code you used to create dataset
 
 ```{r data}
-dat_file_name <- "YOUR_DATA_FILE_NAME"
+# name for the file that will hold your data. Ex: "va_ct_vdoe_2019_2021_3rd_grade_mean_median_read_score"
+dat_file_name <- "YOUR_DATA_FILE_NAME"  
 
-source(here::here("data-raw/YOUR_CODE_FILE_NAME"))
+# the source code file where you produced the dataset
+source(here::here("data-raw/YOUR_CODE_FILE_NAME"))  
 
-assign(dat_file_name, YOUR_VAR_NAME_CONTAINING_DATASET)
+# name of the variable containing the dataset in your sourced file
+assign(dat_file_name, YOUR_DATASET_VAR_NAME) 
 ```
 
 ## Write to compressed file
