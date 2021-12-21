@@ -5,7 +5,7 @@ date: "11/18/2021"
 output: html_document
 dataset:
   citation:
-      title: "Test dataset"
+      title: "NEW Test dataset"
       subtitle: ""
       dsDescriptionValue: "Virginia Standards of Learning Test Scores collected by the Virginia Department of Education (VDOE)"
       subject: "Social Sciences (Ex: Education, Politics, Sociology, Economics, Psychology)"
@@ -223,9 +223,13 @@ if (file.exists(here::here("data/dataset_doi"))) {
     ## Save dataset DOI to data
     #writeLines(ds_info$data$persistentId, here::here("data/dataset_doi"))
   } else {
+    
+    # remove datasetVersion layer from JSON
+    updated_metadata <- dataset_metadata$datasetVersion
+    
     dataverse::update_dataset(
       dataset = dataset_doi,
-      body = dataset_metadata,
+      body = updated_metadata,
       key = Sys.getenv("DATAVERSE_KEY"),
       server = Sys.getenv("DATAVERSE_SERVER")
     )
@@ -235,3 +239,4 @@ if (file.exists(here::here("data/dataset_doi"))) {
 
 
 ```
+
