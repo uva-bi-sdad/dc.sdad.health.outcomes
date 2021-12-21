@@ -1,7 +1,5 @@
 {
   "datasetVersion": {
-    "license": "CC0",
-    "termsOfUse": "CC0 Waiver",
     "metadataBlocks": {
       "citation": {
         "displayName": "Citation Metadata",
@@ -85,15 +83,23 @@
                   "multiple": false,
                   "typeClass": "primitive",
                   "value": "DescriptionText1"
-                },
-                "dsDescriptionDate": {
-                  "typeName": "dsDescriptionDate",
-                  "multiple": false,
-                  "typeClass": "primitive",
-                  "value": "1000-01-01"
                 }
               }
             ]
+          },
+          {
+            "typeName": "subject",
+            "multiple": true,
+            "typeClass": "controlledVocabulary",
+            "value": [
+              "Agricultural Sciences"
+            ]
+          },
+          {
+            "typeName": "productionDate",
+            "multiple": false,
+            "typeClass": "primitive",
+            "value": "1003-01-01"
           },
           {
             "typeName": "timePeriodCovered",
@@ -112,21 +118,6 @@
                   "multiple": false,
                   "typeClass": "primitive",
                   "value": "1005-01-02"
-                }
-              }
-            ]
-          },
-          {
-            "typeName": "dateOfCollection",
-            "multiple": true,
-            "typeClass": "compound",
-            "value": [
-              {
-                "dateOfCollectionStart": {
-                  "typeName": "dateOfCollectionStart",
-                  "multiple": false,
-                  "typeClass": "primitive",
-                  "value": "1006-01-01"
                 }
               }
             ]

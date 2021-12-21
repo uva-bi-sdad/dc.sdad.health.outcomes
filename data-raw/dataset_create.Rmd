@@ -5,13 +5,13 @@ date: "11/18/2021"
 output: html_document
 dataset:
   citation:
-      title: "Social Data Commons: Education & Training: Virginia SOL Scores"
+      title: "Test dataset"
       subtitle: ""
       dsDescriptionValue: "Virginia Standards of Learning Test Scores collected by the Virginia Department of Education (VDOE)"
-      dsDescriptionDate: "2021-11-17"
+      subject: "Social Sciences (Ex: Education, Politics, Sociology, Economics, Psychology)"
+      productionDate: "2021-11-17"
       timePeriodCoveredStart: "2015-01-01"
       timePeriodCoveredEnd: "2021-01-01"
-      dateofCollectionStart: "2021-10-31"
       dataSources:
         - "ACS"
         - "County Health Rankings"
@@ -63,38 +63,38 @@ dataset_metadata$datasetVersion$metadataBlocks$citation$fields[[2]]$value <- yml
 dataset_metadata$datasetVersion$metadataBlocks$citation$fields[[5]]$value[[1]]$dsDescriptionValue$value <- yml_metadata$dataset$citation$dsDescriptionValue
 ```
 
-# Set description date (date of upload to dataverse)
+# Set subject
 
 ```{r}
-dataset_metadata$datasetVersion$metadataBlocks$citation$fields[[5]]$value[[1]]$dsDescriptionDate$value <- yml_metadata$dataset$citation$dsDescriptionDate
+dataset_metadata$datasetVersion$metadataBlocks$citation$fields[[6]]$value[[1]] <- yml_metadata$dataset$citation$subject
+```
+
+# Set production date
+
+```{r}
+dataset_metadata$datasetVersion$metadataBlocks$citation$fields[[7]]$value <- yml_metadata$dataset$citation$productionDate
 ```
 
 # Set Time period covered start date
 
 ```{r}
-dataset_metadata$datasetVersion$metadataBlocks$citation$fields[[6]]$value[[1]]$timePeriodCoveredStart$value <- yml_metadata$dataset$citation$timePeriodCoveredStart
+dataset_metadata$datasetVersion$metadataBlocks$citation$fields[[8]]$value[[1]]$timePeriodCoveredStart$value <- yml_metadata$dataset$citation$timePeriodCoveredStart
 ```
 
 # Set Time period covered end date
 
 ```{r}
-dataset_metadata$datasetVersion$metadataBlocks$citation$fields[[6]]$value[[1]]$timePeriodCoveredEnd$value <- yml_metadata$dataset$citation$timePeriodCoveredEnd
-```
-
-# Set Date of Collection Start (Access date)
-
-```{r}
-dataset_metadata$datasetVersion$metadataBlocks$citation$fields[[7]]$value[[1]]$dateOfCollectionStart$value <- yml_metadata$dataset$citation$dateOfCollectionStart
+dataset_metadata$datasetVersion$metadataBlocks$citation$fields[[8]]$value[[1]]$timePeriodCoveredEnd$value <- yml_metadata$dataset$citation$timePeriodCoveredEnd
 ```
 
 # Set data sources
 
 ```{r}
 ## Remove existing data source entries
-dataset_metadata$datasetVersion$metadataBlocks$citation$fields[[8]]$value <- NULL
+dataset_metadata$datasetVersion$metadataBlocks$citation$fields[[9]]$value <- NULL
 ## Add data source entries
 data_source_l <- as.list(yml_metadata$dataset$citation$dataSources)
-dataset_metadata$datasetVersion$metadataBlocks$citation$fields[[8]]$value <- data_source_l
+dataset_metadata$datasetVersion$metadataBlocks$citation$fields[[9]]$value <- data_source_l
 ```
 
 # Set authors
@@ -208,7 +208,7 @@ dataset_metadata$datasetVersion$metadataBlocks$geospatial$fields[[2]]$value <- g
 # Create or update dataverse dataset
 
 ```{r}
-if (exists("data/dataset_doi")) {
+if (file.exists(here::here("data/dataset_doi"))) {
   dataset_doi <- readLines(here::here("data/dataset_doi"))[1]
  
   if (is.na(dataset_doi)) {
@@ -221,7 +221,7 @@ if (exists("data/dataset_doi")) {
     )
   
     ## Save dataset DOI to data
-    writeLines(ds_info$data$persistentId, here::here("data/dataset_doi"))
+    #writeLines(ds_info$data$persistentId, here::here("data/dataset_doi"))
   } else {
     dataverse::update_dataset(
       dataset = dataset_doi,
