@@ -5,6 +5,7 @@ date: "11/18/2021"
 output: html_document
 dataset:
   citation:
+      NEW_FIELD: " "
       title: "NEW Test dataset"
       subtitle: ""
       dsDescriptionValue: "Virginia Standards of Learning Test Scores collected by the Virginia Department of Education (VDOE)"
