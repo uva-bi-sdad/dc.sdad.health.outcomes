@@ -9,8 +9,6 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# NAME OF DATASET YOU ARE ADDING (Ex: VDOE SOL 3rd Grade Reading Scores - County Level) 
-
 ## Get dataset DOI
 
 ```{r}

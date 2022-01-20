@@ -5,7 +5,6 @@ date: "11/18/2021"
 output: html_document
 dataset:
   citation:
-      NEW_FIELD: " "
       title: "NEW Test dataset"
       subtitle: ""
       dsDescriptionValue: "Virginia Standards of Learning Test Scores collected by the Virginia Department of Education (VDOE)"
@@ -222,7 +221,24 @@ if (file.exists(here::here("data/dataset_doi"))) {
     )
   
     ## Save dataset DOI to data
-    #writeLines(ds_info$data$persistentId, here::here("data/dataset_doi"))
+    writeLines(ds_info$data$persistentId, here::here("data/dataset_doi"))
+    
+    ## Add Kathryn and Joanna as curators to the dataset
+    curators = c("@kjl5t", "@js2mr")
+    
+    for (user in curators)
+    {
+      role = list(assignee = user, role = "curator")  
+      u = paste0("https://", Sys.getenv("DATAVERSE_SERVER"), 
+                 "/api/datasets/:persistentId/assignments?persistentId=", 
+                 here::here("data/dataset_doi"))  
+      r <- httr::POST(u, httr::add_headers("X-Dataverse-key" = Sys.getenv("DATAVERSE_KEY"), 
+                                          "Content-Type" = "application/json"), 
+                      body = role, encode = 'json') 
+      httr::stop_for_status(r)
+      httr::content(r, "text")
+    }
+    
   } else {
     
     # remove datasetVersion layer from JSON

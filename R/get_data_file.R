@@ -1,22 +1,23 @@
-#' Get YOUR DATA NAME  (Ex: Virginia SOL Scores).
+#' Get Data File (from Dataverse)
 #' Leaving outdir blank will provide the data directly.
-#' If outdir is not blank, the data file will be saved to the directory specified.
-#' @param datasetID doi of dataverse dataset.
+#' If outdir is not blank, the data file will be saved to the (already created) directory specified.
 #' @param file_name name of file to get from the dataverse dataset.
 #' @param outdir target directory if downloading the file.
 #' @import dataverse
 #' @import readr
+#' @import jsonlite
+#' @import here
 #' @export
 #' @examples
-#' get_YOUR_DATA_NAME("doi:xxx", "va_hdct_vdoe_2019_2021_3rd_grade_median_read_score.csv.xz", "outdir")
+#' \dontrun{get_data_file("file_name.csv.xz", "./outdir")}
 
-get_YOUR_DATA_NAME <- function(datasetID, file_name, outdir = "") {
+get_data_file <- function(file_name, outdir = "") {
 
   srv <- Sys.getenv("DATAVERSE_SERVER")
-  doi <- datasetID    #readLines(here::here("data/dataset_doi"))[1]
+  doi <- readLines(here::here("data/dataset_doi"))[1]
 
   data_file_name <- file_name
-  meta_file_name <- sub(".csv.xz", "_metadata.json", file_name)
+  meta_file_name <- sub(".csv.xz", "_metadata.json", file_name, fixed = TRUE)
 
   f <- dataverse::get_file_by_name(
     filename = data_file_name,
