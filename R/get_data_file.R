@@ -42,7 +42,7 @@ get_data_file <- function(file_name, outdir = "") {
     data_file_path <- paste0(outdir, "/", data_file_name)
     writeBin(f, data_file_path)
     lines <- readr::read_lines(df <- xzfile(data_file_path))
-    readr::write_lines(lines, gsub(".xz$", "", data_file_path))
+    readr::write_lines(lines, gsub("\\.xz$", "", data_file_path))
     jsonlite::write_json(d, paste0(outdir, "/", meta_file_name), pretty = TRUE)
   }
 }

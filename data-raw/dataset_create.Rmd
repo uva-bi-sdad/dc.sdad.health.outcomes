@@ -223,21 +223,17 @@ if (file.exists(here::here("data/dataset_doi"))) {
     ## Save dataset DOI to data
     writeLines(ds_info$data$persistentId, here::here("data/dataset_doi"))
     
-    ## Add Kathryn and Joanna as curators to the dataset
-    curators = c("@kjl5t", "@js2mr")
-    
-    for (user in curators)
-    {
-      role = list(assignee = user, role = "curator")  
-      u = paste0("https://", Sys.getenv("DATAVERSE_SERVER"), 
-                 "/api/datasets/:persistentId/assignments?persistentId=", 
-                 here::here("data/dataset_doi"))  
-      r <- httr::POST(u, httr::add_headers("X-Dataverse-key" = Sys.getenv("DATAVERSE_KEY"), 
-                                          "Content-Type" = "application/json"), 
-                      body = role, encode = 'json') 
-      httr::stop_for_status(r)
-      httr::content(r, "text")
-    }
+    ## Add WebApps team as curators to the dataset
+
+    role = list(assignee = "&explicit/5710-SDAD_WebApps", role = "curator")  
+    u = paste0("https://", Sys.getenv("DATAVERSE_SERVER"), 
+               "/api/datasets/:persistentId/assignments?persistentId=", 
+               here::here("data/dataset_doi"))  
+    r <- httr::POST(u, httr::add_headers("X-Dataverse-key" = Sys.getenv("DATAVERSE_KEY"), 
+                                         "Content-Type" = "application/json"), 
+                    body = role, encode = 'json') 
+    httr::stop_for_status(r)
+    httr::content(r, "text")
     
   } else {
     
