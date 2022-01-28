@@ -6,7 +6,6 @@
 #' @import dataverse
 #' @import readr
 #' @import jsonlite
-#' @import here
 #' @export
 #' @examples
 #' \dontrun{get_data_file("file_name.csv.xz", "./outdir")}
@@ -14,7 +13,7 @@
 get_data_file <- function(file_name, outdir = "") {
 
   srv <- Sys.getenv("DATAVERSE_SERVER")
-  doi <- readLines(here::here("data/dataset_doi"))[1]
+  doi <- dataset_doi
 
   data_file_name <- file_name
   meta_file_name <- sub(".csv.xz", "_metadata.json", file_name, fixed = TRUE)

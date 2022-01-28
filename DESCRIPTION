@@ -2,10 +2,15 @@ Package: dc.template
 Type: Package
 Title: What the Package Does (Title Case)
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Authors@R: c(
+    person("Social and Decision Analytics Division (SDAD), Biocomplexity Institute, University of Virginia", role = c("aut", "cre")),
+    person("YOUR_FIRST_NAME", "YOUR_LAST_NAME", role = c("aut", "cre"))
+  )
+Description: Allows user to easily get YOUR_DATA data from the SDAD Data Commons.  Data can be provided directly or in a file.
 License: CC0 1.0
 Encoding: UTF-8
 LazyData: true
+Depends:
+    R (>= 3.5.0)
+Imports: dataverse, readr, jsonlite
+    

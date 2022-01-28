@@ -222,13 +222,14 @@ if (file.exists(here::here("data/dataset_doi"))) {
   
     ## Save dataset DOI to data
     writeLines(ds_info$data$persistentId, here::here("data/dataset_doi"))
+    save(ds_info$data$persistentId, file = here::here("R/sysdata.rda"))
     
     ## Add WebApps team as curators to the dataset
 
     role = list(assignee = "&explicit/5710-SDAD_WebApps", role = "curator")  
     u = paste0("https://", Sys.getenv("DATAVERSE_SERVER"), 
                "/api/datasets/:persistentId/assignments?persistentId=", 
-               here::here("data/dataset_doi"))  
+               readLines(here::here("data/dataset_doi"))[1])  
     r <- httr::POST(u, httr::add_headers("X-Dataverse-key" = Sys.getenv("DATAVERSE_KEY"), 
                                          "Content-Type" = "application/json"), 
                     body = role, encode = 'json') 

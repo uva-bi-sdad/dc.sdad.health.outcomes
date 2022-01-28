@@ -1,14 +1,13 @@
 #' Get Data File Names (from Dataverse)
 #' Retrieve data file names in the Dataverse dataset.
 #' @import dataverse
-#' @import here
 #' @export
 #' @examples
 #' \dontrun{get_data_file_names()}
 
 get_data_file_names <- function() {
 
-  doi <- readLines(here::here("data/dataset_doi"))[1]
+  doi <- dataset_doi
 
   file_names <- dataverse::dataset_files(
     dataset = doi,
@@ -19,9 +18,16 @@ get_data_file_names <- function() {
 
   names <- c()
 
-  for(i in 1:length(file_names))
+  if (length(file_names) > 0)
   {
-    names <- c(names, file_names[[i]]$dataFile$filename)
+    for(i in 1:length(file_names))
+    {
+      names <- c(names, file_names[[i]]$dataFile$filename)
+    }
+
+  } else
+  {
+    names <- file_names
   }
 
   names
