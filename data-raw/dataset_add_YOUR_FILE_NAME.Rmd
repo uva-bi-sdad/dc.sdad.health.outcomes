@@ -87,14 +87,17 @@ if (length(file_names) > 0)
 
 if (paste0(all_geos_file_name, ".csv.xz") %in% names) # file already exists, so we update it
 {
+   idx = which(names == paste0(all_geos_file_name, ".csv.xz"))
+  
    dataverse::update_dataset_file(
      file = dat_file_path,
      dataset = dataset_doi,
-     id = paste0(all_geos_file_name, ".csv.xz"),
+     id = file_names[[idx]]$dataFile$id,
      key = Sys.getenv("DATAVERSE_KEY"),
      server   = Sys.getenv("DATAVERSE_SERVER"),
      description = all_geos_file_name
-   )  
+   )
+   
 } else  # file doesn't exist, so we add it to the dataset
 {
    dataverse::add_dataset_file(
