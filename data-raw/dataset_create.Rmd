@@ -221,8 +221,9 @@ if (file.exists(here::here("data/dataset_doi"))) {
     )
   
     ## Save dataset DOI to data
-    writeLines(ds_info$data$persistentId, here::here("data/dataset_doi"))
-    save(ds_info$data$persistentId, file = here::here("R/sysdata.rda"))
+    doi <- ds_info$data$persistentId
+    writeLines(doi, here::here("data/dataset_doi"))
+    save(doi, file = here::here("R/sysdata.rda"))
     
     ## Add WebApps team as curators to the dataset
 
