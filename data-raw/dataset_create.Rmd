@@ -5,7 +5,7 @@ date: "11/18/2021"
 output: html_document
 dataset:
   citation:
-      title: "NEW Test dataset"
+      title: "Social Data Commons: your title here"
       subtitle: ""
       dsDescriptionValue: "Virginia Standards of Learning Test Scores collected by the Virginia Department of Education (VDOE)"
       subject: "Social Sciences (Ex: Education, Politics, Sociology, Economics, Psychology)"
@@ -221,9 +221,9 @@ if (file.exists(here::here("data/dataset_doi"))) {
     )
   
     ## Save dataset DOI to data
-    doi <- ds_info$data$persistentId
-    writeLines(doi, here::here("data/dataset_doi"))
-    save(doi, file = here::here("R/sysdata.rda"))
+    dataset_doi <- ds_info$data$persistentId
+    writeLines(dataset_doi, here::here("data/dataset_doi"))
+    save(dataset_doi, file = here::here("R/sysdata.rda"))
     
     ## Add WebApps team as curators to the dataset
 
