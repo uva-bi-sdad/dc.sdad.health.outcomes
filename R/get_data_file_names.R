@@ -1,5 +1,7 @@
 #' Get Data File Names (from Dataverse)
+#'
 #' Retrieve data file names in the Dataverse dataset.
+#'
 #' @import dataverse
 #' @export
 #' @examples

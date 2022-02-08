@@ -3,8 +3,8 @@ Type: Package
 Title: What the Package Does (Title Case)
 Version: 0.1.0
 Authors@R: c(
-    person("Social and Decision Analytics Division (SDAD), Biocomplexity Institute, University of Virginia", role = c("aut", "cre")),
-    person("YOUR_FIRST_NAME", "YOUR_LAST_NAME", role = c("aut", "cre"))
+    person("Social and Decision Analytics Division (SDAD), Biocomplexity Institute, University of Virginia", role = c("aut")),
+    person("YOUR_FIRST_NAME", "YOUR_LAST_NAME", email = "YOUR_EMAIL_ADDRESS", role = c("aut", "cre"))
   )
 Description: Allows user to easily get YOUR_DATA data from the SDAD Data Commons.  Data can be provided directly or in a file.
 License: CC0 1.0

@@ -1,6 +1,8 @@
 #' Get Data File (from Dataverse)
+#'
 #' Leaving outdir blank will provide the data directly.
 #' If outdir is not blank, the data file will be saved to the (already created) directory specified.
+#'
 #' @param file_name name of file to get from the dataverse dataset.
 #' @param outdir target directory if downloading the file.
 #' @import dataverse
