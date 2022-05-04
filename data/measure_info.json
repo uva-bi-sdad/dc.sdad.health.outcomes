@@ -5,11 +5,12 @@
     "full_name": "percent_poor_ment_hlth_days_14_and_over:perc_poor_ment_hlth_days_14_and_over",
     "measure": "perc_poor_ment_hlth_days_14_and_over",
     "type": "percent",
-    "short_name": "Poor mental health population",
-    "long_name": "Percent of the population with poor mental health",
+    "short_name": "Percentage reporting poor mental health",
+    "long_name": "Percentage reporting poor mental health",
     "short_description": "Percent of the population self-reporting poor mental health",
     "long_description": "Percent of the population self-reporting poor mental health in over 14 days of the previous month. Based on the Virginia Behavioral Risk Factor Surveillance Survey.",
     "statement": "{value} of the population in {features.name} reports poor mental health.",
+    "equity_category" : "Status",
     "sources": [
       {
         "name": "Virginia Behavioral Risk Factor Surveillance System",
@@ -24,11 +25,12 @@
     "full_name": "percent_poor_phys_hlth_days_14_and_over:perc_poor_phys_hlth_days_14_and_over",
     "measure": "perc_poor_phys_hlth_days_14_and_over",
     "type": "percent",
-    "short_name": "Poor physical health population",
-    "long_name": "Percent of the population with poor physical health",
+    "short_name": "Percentage reporting poor physical health",
+    "long_name": "Percentage reporting poor physical health",
     "short_description": "Percent of the population self-reporting poor physical health",
     "long_description": "Percent of the population self-reporting poor physical health in over 14 days of the previous month. Based on the Virginia Behavioral Risk Factor Surveillance Survey.",
     "statement": "{value} of the population in {features.name} reports poor physical health.",
+    "equity_category" : "Status",
     "sources": [
       {
         "name": "Virginia Behavioral Risk Factor Surveillance System",
