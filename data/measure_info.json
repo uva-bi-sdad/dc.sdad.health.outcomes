@@ -1,8 +1,8 @@
 {
-  "percent_poor_ment_hlth_days_14_and_over:perc_poor_ment_hlth_days_14_and_over": {
+  "brfss_sae:perc_poor_ment_hlth_days_14_and_over": {
     "category": "Health",
     "measure_table": "dc_health_behavior_diet.va_hdcttr_sdad_2015_2019_percent_poor_ment_hlth_days_14_and_over",
-    "full_name": "percent_poor_ment_hlth_days_14_and_over:perc_poor_ment_hlth_days_14_and_over",
+    "full_name": "brfss_sae:perc_poor_ment_hlth_days_14_and_over",
     "measure": "perc_poor_ment_hlth_days_14_and_over",
     "type": "percent",
     "short_name": "Percentage reporting poor mental health",
@@ -19,10 +19,10 @@
       }
     ]
   },
-  "percent_poor_phys_hlth_days_14_and_over:perc_poor_phys_hlth_days_14_and_over": {
+  "brfss_sae:perc_poor_phys_hlth_days_14_and_over": {
     "category": "Health",
     "measure_table": "dc_health_behavior_diet.va_hdcttr_sdad_2015_2019_percent_poor_phys_hlth_days_14_and_over",
-    "full_name": "percent_poor_phys_hlth_days_14_and_over:perc_poor_phys_hlth_days_14_and_over",
+    "full_name": "brfss_sae:perc_poor_phys_hlth_days_14_and_over",
     "measure": "perc_poor_phys_hlth_days_14_and_over",
     "type": "percent",
     "short_name": "Percentage reporting poor physical health",
